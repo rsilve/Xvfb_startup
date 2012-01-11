@@ -1,0 +1,14 @@
+case $1 in
+        status)
+pgrep -c Xvfb i> /dev/null && echo "Running" || echo "Stopped"
+;;
+        start)
+/usr/bin/Xvfb :0 -screen 0 1024x768x24 > /var/log/xvfb.log 2>&1 &
+echo "Xvfb started"
+;;
+        stop)
+pkill Xvfb
+echo "Xvfb stopped"
+;;
+esac
+
